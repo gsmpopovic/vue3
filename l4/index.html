@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-full grid place-items-center">
+    <div id="app">
+      <!-- COMPONENTS IN VUE 3 -->
+      <app-button>Sumbit</app-button>
+    </div>
+  </body>
+  <script>
+        app = {
+
+            components : {
+                'app-button' : {
+
+                    template : `
+                    <div>
+                        <button class="p-5 bg-gray-200" disabled="processing" v-on:click="toggle">
+                        <slot />
+                        </button>
+                    </div>
+                    `,
+
+                    data(){
+    return {
+        processing : false,
+    }
+                    },
+
+                    methods : {
+                        toggle(){
+                            this.processing = !this.processing;
+                        }
+                    },
+                    mounted(){
+
+                        alert('hello world');
+
+                    }
+                }
+            },
+          data() {
+            return {};
+          },
+
+          methods: {},
+        };
+        Vue.createApp(app).mount("#app");
+  </script>
+</html>
