@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <style>
+
+        html, body { height: 100%}
+
+        body{ 
+            display: grid;
+            place-items: center;
+         }
+
+         .text-green {
+            color : green; 
+         }
+
+
+         .text-red {
+            color : red; 
+         }
+
+
+    </style>
+</head>
+<body>
+    <div id="app">
+
+         
+        <!-- 
+            
+            v-model example 
+
+            {{greeting}}
+
+        <input type = "text" v-model="greeting"/> 
+    
+        -->
+
+        <!-- 
+            v-bind, v-on:click example 
+            
+            <button v-bind:class="active ? 'text-green' : 'text-red'" v-on:click="toggle">Click me</button> 
+        -->
+    
+    </div>
+
+</body>
+<script>
+    options = {
+    data() {
+
+        return {
+            
+            /* v-model
+           
+            greeting : "hello world",
+           
+            */
+
+            /* v-bind, v-on:click 
+            active : false
+
+            */
+        }
+
+    },
+
+    methods : {
+        toggle(){
+            this.active = ! this.active
+        }, 
+    }
+    }
+    Vue.createApp(options).mount("#app");
+</script>
+</html>
