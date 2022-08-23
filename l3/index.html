@@ -1,53 +1,62 @@
-<!doctype html>
-<html>
-<head>
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
     <script src="https://unpkg.com/vue@3"></script>
-
-    <style>
-
-        html, body { height: 100%}
-
-        body{ 
-            display: grid;
-            place-items: center;
-         }
-
-         .text-green {
-            color : green; 
-         }
-
-
-         .text-red {
-            color : red; 
-         }
-
-
-    </style>
-</head>
-<body>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-full grid place-items-center">
+    <!-- ON COMPUTED PROPERTIES IN VUE3-->
     <div id="app">
+      <section v-show="uncompletedAssignments.length">
+        <h2>IN Progress</h2>
+        <ul>
+          <li v-for="assignment in uncompletedAssignments" :key="assignment.id">
+            <label>
+              {{assignment.name}}
 
-    
-    
+              <input type="checkbox" v-model="assignment.completed" />
+            </label>
+          </li>
+        </ul>
+      </section>
+
+      <section v-show="completedAssignments.length">
+        <h2>Completed</h2>
+        <ul>
+          <li v-for="assignment in completedAssignments" :key="assignment.id">
+            <label>
+              {{assignment.name}}
+
+              <input type="checkbox" v-model="assignment.completed" />
+            </label>
+          </li>
+        </ul>
+      </section>
     </div>
-
-</body>
-<script>
+  </body>
+  <script>
     options = {
-
-    data() {
-
+      data() {
         return {
-            
+          assignments: [
+            { name: "1", completed: false, id: 1 },
+            { name: "2", completed: false, id: 2 },
+            { name: "3", completed: false, id: 3 },
+          ],
+        };
+      },
 
-        }
+      methods: {},
 
-    },
-
-    methods : {
-
-    }
-    }
+      computed: {
+        completedAssignments() {
+          return this.assignments.filter((a) => a.completed);
+        },
+        uncompletedAssignments() {
+          return this.assignments.filter((a) => !a.completed);
+        },
+      },
+    };
     Vue.createApp(options).mount("#app");
-</script>
+  </script>
 </html>
