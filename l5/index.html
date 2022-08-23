@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-full grid place-items-center">
+    <div id="app">
+      <!-- COMPONENTS IN VUE 3 -->
+      <app-button>Sumbit</app-button>
+    </div>
+  </body>
+  <script type="module">
+
+import AppButton from "./js/components/AppButton.js";
+let app = {
+
+            components : {
+                'app-button' : AppButton,
+          data() {
+            return {};
+          },
+
+          methods: {},
+        }
+    };
+        Vue.createApp(app).mount("#app");
+  </script>
+</html>
