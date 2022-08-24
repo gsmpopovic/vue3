@@ -2,16 +2,37 @@ export default {
 
     template : `
     <div>
-        <button class="p-5 bg-gray-200" disabled="processing" v-on:click="toggle">
+        <button 
+        
+        v-bind:class="{
+            'p-5 border rounded' : true, 
+            'bg-green-200' : type == 'primary',
+            'bg-blue-200' : type == 'secondary',
+            'bg-gray-200' : type == 'muted',
+        }" 
+        
+        :disabled="processing" 
+        
+        v-on:click="toggle">
+        
         <slot />
+        
         </button>
+    
     </div>
     `,
 
-    data(){
-return {
-processing : false,
-}
+    props : {
+
+        type : {
+            type: String, 
+            default: 'primary'
+        },
+
+        processing: {
+            type : Boolean, 
+            default : false
+        }
     },
 
     methods : {

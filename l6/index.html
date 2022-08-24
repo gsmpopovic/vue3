@@ -7,13 +7,14 @@
   </head>
   <body class="h-full grid place-items-center">
     <div id="app">
-        <app-button>Submit</app-button>
+        <!-- PROPS IN VUE 3-->
+        <app-button type="primary" processing="true">Submit</app-button>
     </div>
   </body>
   <script type="module">
 
     import app from './js/components/App.js';
-    
+
     Vue.createApp(app).mount("#app");
   </script>
 </html>
