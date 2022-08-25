@@ -15,11 +15,7 @@ export default {
 
   data() {
     return {
-      assignments: [
-        { name: "1", completed: false, id: 1, tag : 'a' },
-        { name: "2", completed: false, id: 2, tag : 'a' },
-        { name: "3", completed: false, id: 3, tag : 'b' },
-      ],
+      assignments: [],
       form : {
         name : null
       },
@@ -41,6 +37,16 @@ export default {
 
     },
 
+  },
+
+  created(){
+
+    fetch('http://localhost:3001')
+    .then(response => response.json())
+    .then(data => {
+
+      console.log(data);
+    });
   },
 
   computed: {
